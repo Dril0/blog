@@ -4,7 +4,7 @@
 {% for post in post_list %}
 <div>
     <h2>
-        <a href="">{{ post.title}}</a>
+        <a href="{% url 'post_detail' post.pk %}">{{ post.title}}</a>
         <p>{{ post.body }}</p>
     </h2>
 </div>
