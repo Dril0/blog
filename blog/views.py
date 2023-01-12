@@ -5,11 +5,11 @@ from .models import Post
 # Create your views here.
 
 
-class BlogListView(ListView):
+class BlogListView(ListView):  # Lista todos los Blog.
     model = Post
     template_name = "home.html"
 
 
-class BlogDetailView(DetailView):
+class BlogDetailView(DetailView):  # detalle de todos los Blog.
     model = Post
     template_name = "post_detail.html"

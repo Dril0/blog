@@ -5,6 +5,7 @@
 <div>
     <h2>
         <a href="{% url 'post_detail' post.pk %}">{{ post.title}}</a>
+        <!-- url es el tag, 'el nombre de la ruta URL', del post el id o pk. -->
         <p>{{ post.body }}</p>
     </h2>
 </div>
