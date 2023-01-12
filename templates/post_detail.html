@@ -6,5 +6,10 @@
     <h2>{{ post.title }}</h2>
     <p>{{ post.body }}</p>
 </div>
-
+<p>
+    <a href="{% url 'post_edit' post.pk %}">Editar blog post +</a>
+</p>
+<p>
+    <a href="{% url 'post_delete' post.pk %}">Eliminar blog post -</a>
+</p>
 {% endblock content %}
