@@ -11,12 +11,20 @@
 </head>
 
 <body>
-    <header>
-        <h1>
-            <a href="{% url 'home' %}">Django Blog</a>
-        </h1>
-    </header>
     <div>
+        <header>
+            <div class="nav-left">
+                <h1>
+                    <a href="{% url 'home' %}">Django Blog</a>
+                </h1>
+            </div>
+            <div class="nav-right">
+                <h3>
+                    <a href="{% url 'post_new' %}">Nuevo blog post +</a>
+                </h3>
+            </div>
+
+        </header>
         {% block content %}
         {% endblock content %}
     </div>
