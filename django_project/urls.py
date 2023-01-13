@@ -20,4 +20,8 @@ from django.urls import path, include  # include para incluir las urls de la app
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("blog.urls")),
+    path(
+        "accounts/", include("django.contrib.auth.urls")
+    ),  # rutemos toda la url accounts al sistema de auth de django.
+    path("accounts/", include("accounts.urls")),
 ]
