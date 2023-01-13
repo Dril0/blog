@@ -47,3 +47,26 @@ class BlogTest(TestCase):
         self.assertEqual(no_response.status_code, 404)
         self.assertContains(response, "Titulo")
         self.assertTemplateUsed(response, "post_detail.html")
+
+    def test_post_createview(self):
+        response = self.client.get(
+            reverse("post_new"),
+            {"title": "titulo nuevo", "body": "body nuevo", "author": self.user.id},
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Post.objects.last().title, "titulo nuevo")
+        self.assertEqual(Post.objects.last().body, "body nuevo")
+        """Post.objects.last() nos muestra el ultimo objeto creado en nuestro modelo."""
+
+    def test_post_updateview(self):
+        response = self.client.get(
+            reverse("post_edit", args="1"),
+            {"title": "titulo actualizado", "body": "body actualizado"},
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Post.objects.last().title, "titulo actualizado")
+        self.assertEqual(Post.objects.last().body, "body actualizado")
+
+    def test_post_deleteview(self):
+        response = self.client.get("post_delete", args="1")
+        self.assertEqual(response.status_code, 302)
