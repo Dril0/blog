@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "blog.apps.BlogConfig",  # indicamos que hay una nueva app.
-    "blog.apps.AccountsConfig",
+    "accounts.apps.AccountsConfig",
 ]
 
 MIDDLEWARE = [
