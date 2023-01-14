@@ -18,11 +18,13 @@
                     <a href="{% url 'home' %}">Django Blog</a>
                 </h1>
             </div>
+            {% if user.is_authenticated %}
             <div class="nav-right">
                 <h3>
                     <a href="{% url 'post_new' %}">Nuevo blog post +</a>
                 </h3>
             </div>
+            {% endif %}
 
         </header>
         {% if user.is_authenticated %}
@@ -31,6 +33,7 @@
         {% else %}
         <p>Disculpe, no esta logueado.</p>
         <a href="{% url 'login' %}">Log In</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
         {% endif %}
 
         {% block content %}
