@@ -25,7 +25,11 @@ SECRET_KEY = "django-insecure-(46w5bp-ydie%zq(t@8%y4e0pivo5t9de)44m&c-!^0yh9ke9=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    ".herokuapp.com",
+    "localhost",
+    "127.0.0.1",
+]  # avisamos de los host permitidos.
 
 
 # Application definition
@@ -36,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",  # avisamos que instalamos el paquete whitenoise.
     "django.contrib.staticfiles",
     "blog.apps.BlogConfig",  # indicamos que hay una nueva app.
     "accounts.apps.AccountsConfig",
@@ -44,6 +49,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # agredamos el whitenoise middleware.
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -124,6 +130,13 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]  # le dice a django donde buscar las nueva carpeta de static con los archivos estatic.
+
+STATIC_ROOT = (
+    BASE_DIR / "staticfiles"
+)  # ubicacion absoluta de los archivos recolectados por collectstatic, en la carpeta llamada staticfiles.
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"  # es el motor de almacenamiento de archivos utilizado por collecstatic
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
